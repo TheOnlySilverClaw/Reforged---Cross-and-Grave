@@ -1,17 +1,12 @@
 package org.silvercatcher.reforged_cag.holy;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import com.google.common.base.Predicate;
 
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.world.World;
 
 public class ItemHolyCrossGolden extends ItemHolyCross {

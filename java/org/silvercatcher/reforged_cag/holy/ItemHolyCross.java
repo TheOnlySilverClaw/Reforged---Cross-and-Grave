@@ -1,32 +1,15 @@
 package org.silvercatcher.reforged_cag.holy;
 
-import java.util.ArrayDeque;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.UUID;
-import java.util.stream.Stream;
-
 import org.silvercatcher.reforged_cag.CrossAndGraveMod;
-import org.silvercatcher.reforged_cag.util.NBTHelper;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSource;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import scala.tools.nsc.doc.base.comment.Link;
 
 public abstract class ItemHolyCross extends Item {
 

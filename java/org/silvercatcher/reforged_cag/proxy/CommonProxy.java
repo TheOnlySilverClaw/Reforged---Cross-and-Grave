@@ -3,26 +3,16 @@ package org.silvercatcher.reforged_cag.proxy;
 import java.util.Map.Entry;
 
 import org.silvercatcher.reforged_cag.CrossAndGraveMod;
-import org.silvercatcher.reforged_cag.necromantic.NecromanticEvents;
-import org.silvercatcher.reforged_cag.necromantic.NecromanticMinionProperties;
-import org.silvercatcher.reforged_cag.necromantic.NecromanticSettings;
 import org.silvercatcher.reforged_cag.necromantic.NecromanticSettings;
 import org.silvercatcher.reforged_cag.necromantic.NecromanticTransformation;
 
-import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.world.gen.structure.StructureMineshaftPieces.Cross;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;

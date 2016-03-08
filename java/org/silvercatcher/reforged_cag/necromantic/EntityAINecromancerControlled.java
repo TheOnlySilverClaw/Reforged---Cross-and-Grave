@@ -3,11 +3,8 @@ package org.silvercatcher.reforged_cag.necromantic;
 import java.util.Objects;
 
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAIBase;
-import net.minecraft.entity.ai.EntityAITarget;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.pathfinding.PathNavigate;
 
 public class EntityAINecromancerControlled extends EntityAIBase {
 

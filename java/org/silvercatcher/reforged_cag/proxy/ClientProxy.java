@@ -3,14 +3,10 @@ package org.silvercatcher.reforged_cag.proxy;
 import java.util.Map.Entry;
 
 import org.silvercatcher.reforged_cag.CrossAndGraveMod;
-import org.silvercatcher.reforged_cag.necromantic.NecromanticEvents;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemModelMesher;
-import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 

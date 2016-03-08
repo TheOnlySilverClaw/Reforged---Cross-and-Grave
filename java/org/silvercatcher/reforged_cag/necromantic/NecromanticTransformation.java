@@ -2,9 +2,6 @@ package org.silvercatcher.reforged_cag.necromantic;
 
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.ChatStyle;
-import net.minecraft.util.EnumChatFormatting;
 
 public abstract class NecromanticTransformation <T extends EntityLiving>{
 	

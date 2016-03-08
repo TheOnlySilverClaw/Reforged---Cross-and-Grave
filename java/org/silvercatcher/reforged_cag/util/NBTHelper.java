@@ -1,11 +1,8 @@
 package org.silvercatcher.reforged_cag.util;
 
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.nbt.NBTTagString;
-import sun.nio.cs.ext.COMPOUND_TEXT;
 
 public class NBTHelper {
 

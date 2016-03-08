@@ -1,7 +1,5 @@
 package org.silvercatcher.reforged_cag.holy;
 
-import java.util.Collections;
-import java.util.LinkedList;
 import java.util.UUID;
 
 import org.silvercatcher.reforged_cag.util.NBTHelper;
@@ -15,8 +13,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.DamageSource;
-import net.minecraftforge.common.util.Constants.NBT;
 
 public class ItemHolyCrossWooden extends ItemHolyCross {
 

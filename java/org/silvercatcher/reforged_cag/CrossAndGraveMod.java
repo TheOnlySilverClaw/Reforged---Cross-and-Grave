@@ -2,15 +2,12 @@ package org.silvercatcher.reforged_cag;
 
 import java.util.HashMap;
 
-import org.silvercatcher.reforged_cag.holy.ItemHolyCross;
 import org.silvercatcher.reforged_cag.holy.ItemHolyCrossGolden;
 import org.silvercatcher.reforged_cag.holy.ItemHolyCrossWooden;
 import org.silvercatcher.reforged_cag.necromantic.ItemNecromancersStaff;
 import org.silvercatcher.reforged_cag.proxy.CommonProxy;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
