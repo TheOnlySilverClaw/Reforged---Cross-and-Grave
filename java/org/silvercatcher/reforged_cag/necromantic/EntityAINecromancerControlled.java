@@ -24,7 +24,7 @@ public class EntityAINecromancerControlled extends EntityAIBase {
 		
 		this.slave = Objects.requireNonNull(slave);
 		this.properties =(NecromanticMinionProperties)
-				slave.getExtendedProperties(NecromanticSettings.necroProperties);
+				slave.getExtendedProperties(NecromanticMinionProperties.key);
 	}
 
 	@Override

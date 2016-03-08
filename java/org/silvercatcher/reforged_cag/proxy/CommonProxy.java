@@ -31,7 +31,7 @@ public class CommonProxy {
 	
 	public void preInit(FMLPreInitializationEvent event) {
 		
-		MinecraftForge.EVENT_BUS.register(new NecromanticEvents());
+		//MinecraftForge.EVENT_BUS.register(new NecromanticEvents());
 		registerItems();
 	}
 	

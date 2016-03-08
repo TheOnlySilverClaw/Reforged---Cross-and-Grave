@@ -34,6 +34,7 @@ public abstract class NecromanticTransformation <T extends EntityLiving>{
 	public EntityLiving transform(
 			EntityPlayer master, T slave) {
 		
+		slave.targetTasks.taskEntries.clear();
 		slave.targetTasks.addTask(0, new EntityAINecromancerControlled(slave));
 		return slave;
 	}
