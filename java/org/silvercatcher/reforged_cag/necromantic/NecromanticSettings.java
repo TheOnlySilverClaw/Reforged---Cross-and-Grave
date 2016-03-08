@@ -8,6 +8,8 @@ import net.minecraft.util.EnumChatFormatting;
 
 public class NecromanticSettings {
 
+	public static final String necroProperties = "necro";
+
 	public static final ChatStyle necromanticcChatStyle =
 			new ChatStyle().setColor(EnumChatFormatting.DARK_PURPLE).setItalic(true);
 	

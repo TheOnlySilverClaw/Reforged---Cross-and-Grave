@@ -33,4 +33,12 @@ public abstract class NecromanticTransformation <T extends EntityLivingBase>{
 	 */
 	public abstract EntityLivingBase transform(
 			EntityPlayer master, T slave);
+	
+	protected NecromanticMinionProperties extendProperties(EntityPlayer master, EntityLivingBase slave) {
+		
+		NecromanticMinionProperties properties =
+				new NecromanticMinionProperties(master);
+		slave.registerExtendedProperties(NecromanticSettings.necroProperties, properties);
+		return properties;
+	}
 }

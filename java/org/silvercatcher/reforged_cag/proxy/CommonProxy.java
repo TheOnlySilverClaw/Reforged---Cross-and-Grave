@@ -4,6 +4,7 @@ import java.util.Map.Entry;
 
 import org.silvercatcher.reforged_cag.CrossAndGraveMod;
 import org.silvercatcher.reforged_cag.necromantic.NecromanticEvents;
+import org.silvercatcher.reforged_cag.necromantic.NecromanticMinionProperties;
 import org.silvercatcher.reforged_cag.necromantic.NecromanticSettings;
 import org.silvercatcher.reforged_cag.necromantic.NecromanticSettings;
 import org.silvercatcher.reforged_cag.necromantic.NecromanticTransformation;
@@ -50,6 +51,8 @@ public class CommonProxy {
 
 			@Override
 			public EntityLivingBase transform(EntityPlayer master, EntityZombie slave) {
+				
+				extendProperties(master, slave);
 				return slave;
 			}
 		});
@@ -64,6 +67,8 @@ public class CommonProxy {
 
 					@Override
 					public EntityLivingBase transform(EntityPlayer master, EntitySkeleton slave) {
+						
+						extendProperties(master, slave);
 						return slave;
 					}
 		});
