@@ -1,12 +1,12 @@
 package org.silvercatcher.reforged_cag.necromantic;
 
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.ChatStyle;
 import net.minecraft.util.EnumChatFormatting;
 
-public abstract class NecromanticTransformation <T extends EntityLivingBase>{
+public abstract class NecromanticTransformation <T extends EntityLiving>{
 	
 	/**
 	 * @return the cost to transform a target, can be a constant value
@@ -31,14 +31,18 @@ public abstract class NecromanticTransformation <T extends EntityLivingBase>{
 	 * 
 	 * @return the transformed slave
 	 */
-	public abstract EntityLivingBase transform(
-			EntityPlayer master, T slave);
+	public EntityLiving transform(
+			EntityPlayer master, T slave) {
+		
+		slave.targetTasks.addTask(0, new EntityAINecromancerControlled(slave));
+		return slave;
+	}
 	
-	protected NecromanticMinionProperties extendProperties(EntityPlayer master, EntityLivingBase slave) {
+	protected NecromanticMinionProperties extendProperties(EntityPlayer master, EntityLiving slave) {
 		
 		NecromanticMinionProperties properties =
 				new NecromanticMinionProperties(master);
-		slave.registerExtendedProperties(NecromanticSettings.necroProperties, properties);
+		slave.registerExtendedProperties(NecromanticMinionProperties.key, properties);
 		return properties;
 	}
 }

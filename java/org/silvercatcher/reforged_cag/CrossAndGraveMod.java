@@ -5,7 +5,7 @@ import java.util.HashMap;
 import org.silvercatcher.reforged_cag.holy.ItemHolyCross;
 import org.silvercatcher.reforged_cag.holy.ItemHolyCrossGolden;
 import org.silvercatcher.reforged_cag.holy.ItemHolyCrossWooden;
-import org.silvercatcher.reforged_cag.necromantic.NecromancersStaff;
+import org.silvercatcher.reforged_cag.necromantic.ItemNecromancersStaff;
 import org.silvercatcher.reforged_cag.proxy.CommonProxy;
 
 import net.minecraft.creativetab.CreativeTabs;
@@ -50,7 +50,7 @@ public class CrossAndGraveMod
 		});
 		
 		items.put("necromancers_staff", new Item [] {
-				new NecromancersStaff()
+				new ItemNecromancersStaff()
 		});
 		
 		tabItem = items.get("holy_cross")[1];

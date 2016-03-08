@@ -16,7 +16,9 @@ import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.gen.structure.StructureMineshaftPieces.Cross;
 import net.minecraftforge.common.MinecraftForge;
@@ -30,13 +32,32 @@ public class CommonProxy {
 	public void preInit(FMLPreInitializationEvent event) {
 		
 		MinecraftForge.EVENT_BUS.register(new NecromanticEvents());
+		registerItems();
 	}
 	
 	public void init(FMLInitializationEvent event) {
 		
-		registerItems();
+		registerRecipes();
 		registerNecromanticTransformations();
+	}
 
+	private void registerRecipes() {
+		
+		GameRegistry.addRecipe(
+				new ItemStack(CrossAndGraveMod.items.get("holy_cross")[0]),
+				" s ",
+				"ses",
+				" s ",
+				's', Items.stick,
+				'e', Items.emerald
+				);
+		
+		GameRegistry.addRecipe(new ItemStack(CrossAndGraveMod.items.get("holy_cross")[1]),
+				" g ",
+				"gdg",
+				" g ",
+				'g', Items.gold_ingot,
+				'd', Items.diamond);
 	}
 
 	private void registerNecromanticTransformations() {
@@ -50,7 +71,7 @@ public class CommonProxy {
 			}
 
 			@Override
-			public EntityLivingBase transform(EntityPlayer master, EntityZombie slave) {
+			public EntityLiving transform(EntityPlayer master, EntityZombie slave) {
 				
 				extendProperties(master, slave);
 				return slave;
@@ -66,7 +87,7 @@ public class CommonProxy {
 					}
 
 					@Override
-					public EntityLivingBase transform(EntityPlayer master, EntitySkeleton slave) {
+					public EntityLiving transform(EntityPlayer master, EntitySkeleton slave) {
 						
 						extendProperties(master, slave);
 						return slave;

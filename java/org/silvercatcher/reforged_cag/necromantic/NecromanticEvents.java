@@ -12,9 +12,5 @@ public class NecromanticEvents {
 	public void minionDeath(LivingDeathEvent event) {
 		
 		if(event.isCanceled()) return;
-		
-		System.out.println(event.entityLiving);
 	}
-	
-	
 }

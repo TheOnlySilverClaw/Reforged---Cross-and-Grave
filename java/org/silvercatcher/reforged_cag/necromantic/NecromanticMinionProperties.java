@@ -12,6 +12,8 @@ import net.minecraftforge.common.IExtendedEntityProperties;
 public class NecromanticMinionProperties
 	implements IExtendedEntityProperties {
 
+	public static final String key = "necro_minion";
+	
 	private World world;
 	private EntityPlayer master;
 	

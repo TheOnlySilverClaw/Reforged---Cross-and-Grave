@@ -3,7 +3,7 @@ package org.silvercatcher.reforged_cag.necromantic;
 import org.silvercatcher.reforged_cag.CrossAndGraveMod;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -18,9 +18,9 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
-public class NecromancersStaff extends Item {
+public class ItemNecromancersStaff extends Item {
 	
-	public NecromancersStaff() {
+	public ItemNecromancersStaff() {
 
 		setUnlocalizedName("necromancers_staff_tier1");
 		setCreativeTab(CrossAndGraveMod.crossAndGraveTab);
@@ -50,11 +50,11 @@ public class NecromancersStaff extends Item {
 	@Override
 	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity) {
 
-		if(!player.worldObj.isRemote && entity instanceof EntityLivingBase) {
+		if(!player.worldObj.isRemote && entity instanceof EntityLiving) {
 			
-			EntityLivingBase living = (EntityLivingBase) entity;
+			EntityLiving living = (EntityLiving) entity;
 			
-			NecromanticTransformation<EntityLivingBase> transformation
+			NecromanticTransformation<EntityLiving> transformation
 				= NecromanticSettings.getTransformation(living.getClass());
 
 			if(transformation == null) {
@@ -65,7 +65,7 @@ public class NecromancersStaff extends Item {
 				if(transformation.checkTransformable(player, living)) {
 					
 					NecromanticMinionProperties properties = (NecromanticMinionProperties)
-							living.getExtendedProperties(NecromanticSettings.necroProperties);
+							living.getExtendedProperties(NecromanticMinionProperties.key);
 					
 					if(properties == null) {
 						possess(player, living, transformation);
@@ -87,7 +87,7 @@ public class NecromancersStaff extends Item {
 		return true;
 	}
 	
-	private void warn(EntityPlayer player, EntityPlayer master, EntityLivingBase living) {
+	private void warn(EntityPlayer player, EntityPlayer master, EntityLiving living) {
 		
 		player.addChatMessage(
 				new ChatComponentText("This one serves " + master.getName())
@@ -97,7 +97,7 @@ public class NecromancersStaff extends Item {
 				.setChatStyle(NecromanticSettings.necromanticcChatStyle.setBold(true)));
 	}
 
-	protected void inform(EntityPlayer player, EntityLivingBase living) {
+	protected void inform(EntityPlayer player, EntityLiving living) {
 		
 		String healthReport;
 		
@@ -119,11 +119,10 @@ public class NecromancersStaff extends Item {
 		player.addChatMessage(new ChatComponentText("This one is a loyal servant " + healthReport));
 	}
 
-	protected void possess(EntityPlayer player, EntityLivingBase living,
-			NecromanticTransformation<EntityLivingBase> transformation) {
+	protected void possess(EntityPlayer player, EntityLiving living,
+			NecromanticTransformation<EntityLiving> transformation) {
 		
 		transformation.transform(player, living);
-
 		player.addChatMessage(new ChatComponentText("This one serves us, now."));
 	}
 }

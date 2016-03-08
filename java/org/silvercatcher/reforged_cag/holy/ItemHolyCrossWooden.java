@@ -57,9 +57,7 @@ public class ItemHolyCrossWooden extends ItemHolyCross {
 		NBTTagList sinners = NBTHelper.getTagList(SINNER_TAG, compound);
 		
 		MinecraftServer server = MinecraftServer.getServer();
-		
-		System.out.println(sinners.tagCount());
-		
+				
 		for(int i = 0; i < sinners.tagCount(); i++) {
 			
 			UUID uuid = UUID.fromString(sinners.getStringTagAt(i));
