@@ -15,4 +15,6 @@ public class NecromanticEvents {
 		
 		System.out.println(event.entityLiving);
 	}
+	
+	
 }

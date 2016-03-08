@@ -22,9 +22,8 @@ public class NecromancersStaff extends Item {
 	
 	@Override
 	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity) {
-		
-		
-		if(entity instanceof EntityLivingBase) {
+
+		if(!player.worldObj.isRemote && entity instanceof EntityLivingBase) {
 			
 			EntityLivingBase living = (EntityLivingBase) entity;
 			
@@ -33,7 +32,7 @@ public class NecromancersStaff extends Item {
 
 			if(transformation == null) {
 				player.addChatMessage(new ChatComponentText(
-						"A " + living.getName() + "cannot be made a minion...yet.")
+						"A " + living.getName() + " cannot be made a minion, foolish mortal.")
 						.setChatStyle(NecromanticSettings.necromanticcChatStyle));
 			} else {
 				if(transformation.checkTransformable(player, living)) {
@@ -42,15 +41,61 @@ public class NecromancersStaff extends Item {
 							living.getExtendedProperties(necro_properties);
 					
 					if(properties == null) {
-						System.out.println("no properties");
+						possess(player, living);
 					} else {
+						EntityPlayer master = properties.getMaster();
 						if(properties.getMaster() == null) {
-							System.out.println("no master");
+							possess(player, living);
+						} else {
+							if(properties.getMaster() == player) {
+								inform(player, living);
+							} else {
+								warn(player, master, living);
+							}
 						}
 					}
 				}
 			}
 		}
 		return true;
+	}
+	
+	private void warn(EntityPlayer player, EntityPlayer master, EntityLivingBase living) {
+		
+		player.addChatMessage(
+				new ChatComponentText("This one serves " + master.getName())
+				.setChatStyle(NecromanticSettings.necromanticcChatStyle));
+		master.addChatComponentMessage(
+				new ChatComponentText(player.getName() +  " tried to steal one of your minions!")
+				.setChatStyle(NecromanticSettings.necromanticcChatStyle.setBold(true)));
+	}
+
+	protected void inform(EntityPlayer player, EntityLivingBase living) {
+		
+		String healthReport;
+		
+		float relativeHealth = living.getHealth() / living.getMaxHealth();
+
+		if(relativeHealth > 0.5f) {
+			if(relativeHealth > 0.75f) {
+				healthReport = "and in good shape.";
+			} else {
+				healthReport = "and still has all his limbs.";
+			}
+		} else {
+			if(relativeHealth > 0.25f) {
+				healthReport = ", but could use some spare parts.";
+			} else {
+				healthReport = ", but is falling apart.";
+			}
+		}
+		player.addChatMessage(new ChatComponentText("This one is a loyal servant " + healthReport));
+	}
+
+	protected void possess(EntityPlayer player, EntityLivingBase living) {
+		
+		living.registerExtendedProperties(necro_properties, 
+				new NecromanticMinionProperties(player));
+		player.addChatMessage(new ChatComponentText("This one serves us, now."));
 	}
 }

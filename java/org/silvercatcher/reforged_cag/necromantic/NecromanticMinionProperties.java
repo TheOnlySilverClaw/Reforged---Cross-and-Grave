@@ -15,8 +15,14 @@ public class NecromanticMinionProperties
 	private World world;
 	private EntityPlayer master;
 	
+	public NecromanticMinionProperties(EntityPlayer master) {
+		
+		this.master = master;
+	}
+	
 	@Override
 	public void saveNBTData(NBTTagCompound compound) {
+		
 		if(master != null) {
 			compound.setString("master", master.getPersistentID().toString());
 		}
