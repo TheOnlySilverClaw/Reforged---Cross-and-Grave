@@ -35,22 +35,14 @@ public class ClientProxy extends CommonProxy {
 		
 		String inventory = "inventory";
 		
-		mesher.register(CrossAndGraveMod.items.get("holy_cross")[0], 0, new ModelResourceLocation(
-				CrossAndGraveMod.ID + ":" + CrossAndGraveMod.items.get("holy_cross")[0]
-						.getUnlocalizedName().substring(5), inventory));
-		
-		mesher.register(CrossAndGraveMod.items.get("holy_cross")[1], 0, new ModelResourceLocation(
-				CrossAndGraveMod.ID + ":" + CrossAndGraveMod.items.get("holy_cross")[1]
-						.getUnlocalizedName().substring(5), inventory));
-		
-		
 		for(Entry<String, Item[]> entry : CrossAndGraveMod.items.entrySet()) {
-			
 			
 			Item [] tiers = entry.getValue();
 			
 			for(int i = 0; i < tiers.length; i++) {
-								
+			
+				System.out.println(tiers[i].getUnlocalizedName());
+				
 				mesher.register(tiers[i], 0, new ModelResourceLocation(
 						CrossAndGraveMod.ID + ":" + tiers[i].getUnlocalizedName().substring(5), inventory));
 			}
