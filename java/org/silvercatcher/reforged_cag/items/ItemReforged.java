@@ -5,7 +5,6 @@ import org.silvercatcher.reforged_cag.CrossAndGraveMod;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
 import net.minecraft.world.World;
 
 public abstract class ItemReforged extends Item {

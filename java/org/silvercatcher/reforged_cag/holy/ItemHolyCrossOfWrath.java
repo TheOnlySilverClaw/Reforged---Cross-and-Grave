@@ -2,12 +2,9 @@ package org.silvercatcher.reforged_cag.holy;
 
 import java.util.List;
 
-import com.google.common.base.Predicate;
-
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
 
 public class ItemHolyCrossOfWrath extends ItemHolyCross {
 

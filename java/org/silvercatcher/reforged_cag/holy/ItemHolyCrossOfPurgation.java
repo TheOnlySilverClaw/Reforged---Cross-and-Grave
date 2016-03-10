@@ -7,9 +7,7 @@ import com.google.common.base.Predicate;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSource;
-import net.minecraft.world.World;
 
 public class ItemHolyCrossOfPurgation extends ItemHolyCross {
 	

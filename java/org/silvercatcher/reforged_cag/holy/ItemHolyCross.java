@@ -1,8 +1,5 @@
 package org.silvercatcher.reforged_cag.holy;
 
-import java.util.UUID;
-
-import org.silvercatcher.reforged_cag.CrossAndGraveMod;
 import org.silvercatcher.reforged_cag.items.ItemReforgedWeapon;
 
 import com.google.common.collect.Multimap;
@@ -11,11 +8,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumAction;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.EntityDamageSource;
 import net.minecraft.world.World;
 
 public abstract class ItemHolyCross extends ItemReforgedWeapon {

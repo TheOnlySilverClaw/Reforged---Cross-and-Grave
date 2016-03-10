@@ -5,8 +5,6 @@ import java.util.Random;
 
 import org.silvercatcher.reforged_cag.CrossAndGraveMod;
 
-import com.google.common.base.Predicate;
-
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,8 +12,6 @@ import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
 public class ItemStaffOfRevival extends Item {

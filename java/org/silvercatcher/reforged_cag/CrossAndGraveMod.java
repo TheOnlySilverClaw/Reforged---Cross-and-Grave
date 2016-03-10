@@ -5,7 +5,6 @@ import java.util.HashMap;
 import org.silvercatcher.reforged_cag.holy.ItemHolyCrossOfCourage;
 import org.silvercatcher.reforged_cag.holy.ItemHolyCrossOfPurgation;
 import org.silvercatcher.reforged_cag.holy.ItemHolyCrossOfWrath;
-import org.silvercatcher.reforged_cag.necromantic.ItemNecromancersStaff;
 import org.silvercatcher.reforged_cag.necromantic.ItemStaffOfRevival;
 import org.silvercatcher.reforged_cag.necromantic.ItemStaffOfSacrifice;
 import org.silvercatcher.reforged_cag.proxy.CommonProxy;
