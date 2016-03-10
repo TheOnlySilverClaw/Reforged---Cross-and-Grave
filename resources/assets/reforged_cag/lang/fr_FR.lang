@@ -1,0 +1,10 @@
+itemGroup.reforged_cag=Reforged - Cross & Grave
+
+item.holy_cross_courage.name=Sainte-Croix du Courage
+item.holy_cross_wrath.name=§eSainte-Croix de la colère.
+item.holy_cross_purgation.name=§bSainte-Croix de la purification
+
+item.staff_sacrifice.name=Baguette du Sacrifice
+item.staff_reanimation.name=Baguette de la Reanimation
+
+attribute.name.holy.attackDamage=points d'attaque sainte
