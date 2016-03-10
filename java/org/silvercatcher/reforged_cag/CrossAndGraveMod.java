@@ -2,9 +2,12 @@ package org.silvercatcher.reforged_cag;
 
 import java.util.HashMap;
 
-import org.silvercatcher.reforged_cag.holy.ItemHolyCrossGolden;
-import org.silvercatcher.reforged_cag.holy.ItemHolyCrossWooden;
+import org.silvercatcher.reforged_cag.holy.ItemHolyCrossOfCourage;
+import org.silvercatcher.reforged_cag.holy.ItemHolyCrossOfPurgation;
+import org.silvercatcher.reforged_cag.holy.ItemHolyCrossOfWrath;
 import org.silvercatcher.reforged_cag.necromantic.ItemNecromancersStaff;
+import org.silvercatcher.reforged_cag.necromantic.ItemStaffOfRevival;
+import org.silvercatcher.reforged_cag.necromantic.ItemStaffOfSacrifice;
 import org.silvercatcher.reforged_cag.proxy.CommonProxy;
 
 import net.minecraft.creativetab.CreativeTabs;
@@ -42,16 +45,19 @@ public class CrossAndGraveMod
 	static {
 		
 		items.put("holy_cross", new Item [] {
-				new ItemHolyCrossWooden(),
-				new ItemHolyCrossGolden()
+				new ItemHolyCrossOfCourage(),
+				new ItemHolyCrossOfWrath(),
+				new ItemHolyCrossOfPurgation()
 		});
-		
+
 		items.put("necromancers_staff", new Item [] {
-				new ItemNecromancersStaff()
+				new ItemStaffOfSacrifice(),
+				new ItemStaffOfRevival()
 		});
 		
 		tabItem = items.get("holy_cross")[1];
 	}
+	
 	
 	
     @Instance(ID)

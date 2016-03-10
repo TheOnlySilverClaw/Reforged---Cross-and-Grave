@@ -1,0 +1,7 @@
+{
+    "parent": "reforged_cag:item/necromancers_staff",
+    
+    "textures": {
+        "layer0": "reforged_cag:items/necromancers_staff_skeleton"
+    }
+}

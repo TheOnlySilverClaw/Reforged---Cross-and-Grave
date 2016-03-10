@@ -1,14 +1,14 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
-  "url": "",
+  "modid": "reforged_cag",
+  "name": "Reforged - Cross & Grave",
+  "description": "Adds the Holy Cross (Necromancer's Staff is WIP).",
+  "version": "0.7",
+  "mcversion": "1.8",
+  "url": "http://mods.curse.com/mc-mods/minecraft/242648-reforged-cross-grave",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authorList": ["Silvercatcher"],
+  "credits": "Snow_Yoshi98 for textures.",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []

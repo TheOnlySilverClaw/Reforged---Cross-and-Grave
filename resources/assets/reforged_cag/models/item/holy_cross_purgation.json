@@ -2,6 +2,6 @@
     "parent": "reforged_cag:item/holy_cross",
     
     "textures": {
-        "layer0": "reforged_cag:items/holy_cross_gold"
+        "layer0": "reforged_cag:items/holy_cross_tier3"
     }
 }

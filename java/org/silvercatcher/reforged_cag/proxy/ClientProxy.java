@@ -35,10 +35,7 @@ public class ClientProxy extends CommonProxy {
 			
 			Item [] tiers = entry.getValue();
 			
-			for(int i = 0; i < tiers.length; i++) {
-			
-				System.out.println(tiers[i].getUnlocalizedName());
-				
+			for(int i = 0; i < tiers.length; i++) {				
 				mesher.register(tiers[i], 0, new ModelResourceLocation(
 						CrossAndGraveMod.ID + ":" + tiers[i].getUnlocalizedName().substring(5), inventory));
 			}

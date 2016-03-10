@@ -1,7 +1,14 @@
 package org.silvercatcher.reforged_cag.holy;
 
+import java.util.UUID;
+
 import org.silvercatcher.reforged_cag.CrossAndGraveMod;
+import org.silvercatcher.reforged_cag.items.ItemReforgedWeapon;
+
+import com.google.common.collect.Multimap;
+
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
@@ -11,61 +18,44 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSource;
 import net.minecraft.world.World;
 
-public abstract class ItemHolyCross extends Item {
-
-	protected double reach;
-	protected int delay;
-
-	public ItemHolyCross(int tier) {
-		
-		setUnlocalizedName("holy_cross_tier"  + tier);
-		setCreativeTab(CrossAndGraveMod.crossAndGraveTab);
-		setMaxStackSize(1);
+public abstract class ItemHolyCross extends ItemReforgedWeapon {
+	
+	protected final float holyDamage;
+	protected final double reach;
+	protected final int delay;
+	
+	public ItemHolyCross(String valor, int durability,
+			float meleeDamage, float holyDamage, int delay, double reach) {
+		super("holy_cross_" + valor, durability, meleeDamage);
+		this.holyDamage = holyDamage;
+		this.delay = delay;
+		this.reach = reach;
 	}
 
 	@Override
-	public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn) {
-		
-		playerIn.setItemInUse(itemStackIn, getMaxItemUseDuration(itemStackIn));
-		return itemStackIn;
-	}
-	
-	public DamageSource causeHolyDamage(EntityPlayer punisher) {
-		return new EntityDamageSource("holy", punisher);
-	}
-	
-	@Override
-	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityPlayer playerIn) {
-		
-		if(!worldIn.isRemote) {
-			if(punish(stack, playerIn)) {
-				stack.damageItem(1, playerIn);
+	public void onUsingTick(ItemStack stack, EntityPlayer player, int count) {
+		if(count % delay == 0) {
+			if(whenReady(player, stack)) {
+				stack.damageItem(1, player);
 			}
 		}
-		return stack;
 	}
-		
+	
+	protected abstract boolean whenReady(EntityPlayer player, ItemStack stack);
+	
+	protected void strikeLightning(World world,
+			EntityLivingBase sinner, EntityPlayer punisher) {
+		world.spawnEntityInWorld((new EntityLightningBolt(
+				world, sinner.posX, sinner.posY, sinner.posZ)));
+	}
 	
 	@Override
-	public int getMaxItemUseDuration(ItemStack stack) {
-
-		return delay;
-	}
-	
-	@Override
-	public EnumAction getItemUseAction(ItemStack stack) {
+	public Multimap<String, AttributeModifier> getAttributeModifiers(ItemStack stack) {
 		
-		return EnumAction.BLOCK;
-	}
-
-	/**
-	 * @return true, if a sinner was punished
-	 */
-	protected abstract boolean punish(ItemStack stack, EntityPlayer punisher);
-	
-	protected void punish(EntityLivingBase sinner, EntityPlayer punisher) {
-			sinner.worldObj.addWeatherEffect(new EntityLightningBolt(
-					sinner.worldObj, sinner.posX, sinner.posY, sinner.posZ));
-			sinner.attackEntityFrom(causeHolyDamage(punisher), 0.5f);
+		Multimap<String, AttributeModifier> map = super.getAttributeModifiers(stack);
+		map.put(HolyDamage.attribute.getAttributeUnlocalizedName(),
+				new AttributeModifier(HolyDamage.uuid,
+						HolyDamage.modifierName, holyDamage, 0));
+		return map;
 	}
 }

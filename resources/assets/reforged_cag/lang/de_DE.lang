@@ -1,9 +1,10 @@
 itemGroup.reforged_cag=Reforged - Cross & Grave
 
-item.holy_cross_tier1.name=Heiliges Kreuz des Mutes
-item.holy_cross_tier2.name=§eHeiliges Kreuz des Zorns
-item.holy_cross_tier3.name=§eHeiliges Kreuz der Reinheit
+item.holy_cross_courage.name=Heiliges Kreuz des Mutes
+item.holy_cross_wrath.name=§eHeiliges Kreuz des Zornes
+item.holy_cross_purgation.name=§bHeiliges Kreuz der Reinigung
 
-item.necromancers_staff_tier1.name=Nekromantenstab des Adepten
-item.necromancers_staff_tier2.name=Nekromantenstab des Meisters
-item.necromancers_staff_tier3.name=Nekromantenstab des Lichs
+item.staff_sacrifice.name=Stab des Blutopfers
+item.staff_reanimation.name=Stab der Wiederbelebung
+
+attribute.name.holy.attackDamage=Heiliger Schaden

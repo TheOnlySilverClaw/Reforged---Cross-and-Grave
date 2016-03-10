@@ -14,43 +14,35 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraft.server.MinecraftServer;
 
-public class ItemHolyCrossWooden extends ItemHolyCross {
+public class ItemHolyCrossOfCourage extends ItemHolyCross {
 
-	private static final String SINNER_TAG = "sinners";
+	private final String sinnerTag = "marked_sinners";
 	
-	public ItemHolyCrossWooden() {
-		
-		super(1);
-		delay = 25;
-		reach = 12;
-		setMaxDamage(40);
+	public ItemHolyCrossOfCourage() {
+		super("courage", 30, 1f, 1f, 30, 12d);
 	}
 
 	@Override
 	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity) {
-		
-		if(!player.worldObj.isRemote) {
-			
+					
 			if(entity instanceof EntityLiving && ((EntityLiving) entity).isEntityUndead()) {
-				
-				entity.attackEntityFrom(causeHolyDamage(player), 2);
-
 				if(entity.isEntityAlive()) {
 					NBTTagCompound compound = NBTHelper.getCompound(stack);
-					NBTTagList sinners = NBTHelper.getTagList(SINNER_TAG, compound);
+					NBTTagList sinners = NBTHelper.getTagList(sinnerTag, compound);
 					sinners.appendTag(new NBTTagString(entity.getPersistentID().toString()));
-					NBTHelper.saveTagList(SINNER_TAG, sinners, compound, stack);
+					NBTHelper.saveTagList(sinnerTag, sinners, compound, stack);
 				}
 			}
-		}
-		return true;
+		return false;
 	}
 
-	@Override
-	protected boolean punish(ItemStack stack, EntityPlayer player) {
 
+	@Override
+	protected boolean whenReady(EntityPlayer player, ItemStack stack) {
+		
+		boolean striked = false;
 		NBTTagCompound compound = NBTHelper.getCompound(stack);
-		NBTTagList sinners = NBTHelper.getTagList(SINNER_TAG, compound);
+		NBTTagList sinners = NBTHelper.getTagList(sinnerTag, compound);
 		
 		MinecraftServer server = MinecraftServer.getServer();
 				
@@ -63,12 +55,12 @@ public class ItemHolyCrossWooden extends ItemHolyCross {
 			if(sinner == null || !sinner.isEntityAlive()) {
 				sinners.removeTag(i);
 			} else {
-				punish(sinner, player);
-				NBTHelper.saveTagList(SINNER_TAG, sinners, compound, stack);
-				return true;
+				strikeLightning(player.worldObj, sinner, player);
+				striked = true;
+				break;
 			}
 		}
-		NBTHelper.saveTagList(SINNER_TAG, sinners, compound, stack);
-		return false;
+		NBTHelper.saveTagList(sinnerTag, sinners, compound, stack);
+		return striked;
 	}
 }
