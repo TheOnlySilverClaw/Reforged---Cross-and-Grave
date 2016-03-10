@@ -38,10 +38,10 @@ public class CommonProxy {
 		GameRegistry.addRecipe(
 				new ItemStack(CrossAndGraveMod.items.get("holy_cross")[0]),
 				" s ",
-				"ses",
+				"sgs",
 				" s ",
 				's', Items.stick,
-				'e', Items.emerald
+				'g', Items.gold_ingot
 				);
 		
 		GameRegistry.addRecipe(new ItemStack(CrossAndGraveMod.items.get("holy_cross")[1]),
@@ -50,6 +50,13 @@ public class CommonProxy {
 				" g ",
 				'g', Items.gold_ingot,
 				'd', Items.diamond);
+		
+		GameRegistry.addRecipe(new ItemStack(CrossAndGraveMod.items.get("holy_cross")[2]),
+				" d ",
+				"ded",
+				" d ",
+				'd', Items.diamond,
+				'e', Items.emerald);
 	}
 
 	private void registerNecromanticTransformations() {

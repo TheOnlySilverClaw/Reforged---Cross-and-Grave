@@ -25,6 +25,7 @@ public class ItemHolyCrossOfCourage extends ItemHolyCross {
 	@Override
 	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity) {
 					
+		if(!player.worldObj.isRemote) {
 			if(entity instanceof EntityLiving && ((EntityLiving) entity).isEntityUndead()) {
 				if(entity.isEntityAlive()) {
 					NBTTagCompound compound = NBTHelper.getCompound(stack);
@@ -33,6 +34,7 @@ public class ItemHolyCrossOfCourage extends ItemHolyCross {
 					NBTHelper.saveTagList(sinnerTag, sinners, compound, stack);
 				}
 			}
+		}
 		return false;
 	}
 

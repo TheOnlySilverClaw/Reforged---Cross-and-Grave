@@ -34,7 +34,7 @@ public abstract class ItemHolyCross extends ItemReforgedWeapon {
 
 	@Override
 	public void onUsingTick(ItemStack stack, EntityPlayer player, int count) {
-		if(count % delay == 0) {
+		if(!player.worldObj.isRemote && count % delay == 0) {
 			if(whenReady(player, stack)) {
 				stack.damageItem(1, player);
 			}
@@ -45,7 +45,8 @@ public abstract class ItemHolyCross extends ItemReforgedWeapon {
 	
 	protected void strikeLightning(World world,
 			EntityLivingBase sinner, EntityPlayer punisher) {
-		world.spawnEntityInWorld((new EntityLightningBolt(
+		
+			world.addWeatherEffect((new EntityLightningBolt(
 				world, sinner.posX, sinner.posY, sinner.posZ)));
 	}
 	
