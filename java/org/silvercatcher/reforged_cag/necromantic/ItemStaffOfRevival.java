@@ -5,7 +5,9 @@ import java.util.Random;
 
 import org.silvercatcher.reforged_cag.CrossAndGraveMod;
 
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -17,21 +19,12 @@ import net.minecraft.world.World;
 public class ItemStaffOfRevival extends Item {
 
 	/**
-	 * for any ItemStack where stacksize is safeLine * maxStackSize
+	 * for any ItemStack where stacksize is maxStackSize / safePart
 	 * or greater, summoning is guaranteed to work
 	 */
-	private float safeLine = 0.5f;
+	private int safePart = 2;
 	private final Random random = new Random();
 	private final float searchRange = 4f;
-	/*private final Predicate<EntityItem> filter = new Predicate<EntityItem>() {
-
-		@Override
-		public boolean apply(EntityItem entityItem) {
-			
-			// let's try if the itemstack can be null here...
-			entityItem.getEntityItem() != null;
-		}
-	};*/
 	
 	public ItemStaffOfRevival() {
 		
@@ -55,7 +48,8 @@ public class ItemStaffOfRevival extends Item {
 				Item item = entityItem.getEntityItem().getItem();
 				if(item == null) continue;
 
-				int propability = entityStack.getMaxStackSize() / 2 - entityStack.stackSize;
+				int propability = entityStack.getMaxStackSize()
+						/ safePart - entityStack.stackSize;
 				
 				int r = random.nextInt();
 	
@@ -65,11 +59,17 @@ public class ItemStaffOfRevival extends Item {
 					r = random.nextInt(propability);
 				}
 				
-				if(item == Items.rotten_flesh && r == 0) {
-					entityItem.setDead();
-					EntityZombie summoned = new EntityZombie(worldIn);
+				if(r == 0) {	
+					EntityLiving summoned = null;
+					if(item == Items.rotten_flesh && r == 0) {
+						summoned = new EntityZombie(worldIn);
+					} else if(item == Items.bone) {
+						summoned = new EntitySkeleton(worldIn);
+						summoned.setCurrentItemOrArmor(0, new ItemStack(Items.bow));
+					}
 					summoned.setPosition(entityItem.posX, entityItem.posY, entityItem.posZ);
 					worldIn.spawnEntityInWorld(summoned);
+					entityItem.setDead();
 					stack.damageItem(1, playerIn);
 				}
 			}
