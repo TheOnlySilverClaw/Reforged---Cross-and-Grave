@@ -5,10 +5,7 @@ import java.util.Map.Entry;
 import org.silvercatcher.reforged_cag.CrossAndGraveMod;
 import org.silvercatcher.reforged_cag.holy.HolyEvents;
 
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.monster.EntitySkeleton;
-import net.minecraft.entity.monster.EntityZombie;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -55,6 +52,20 @@ public class CommonProxy {
 				" d ",
 				'd', Items.diamond,
 				'e', Items.emerald);
+		
+		GameRegistry.addRecipe(new ItemStack(CrossAndGraveMod.items.get("necromancers_staff")[0]),
+				"  r",
+				" o ",
+				"o  ",
+				'r', Items.redstone,
+				'o', Item.getItemFromBlock(Blocks.obsidian));
+		
+		GameRegistry.addRecipe(new ItemStack(CrossAndGraveMod.items.get("necromancers_staff")[1]),
+				"  l",
+				" o ",
+				"o  ",
+				'l', new ItemStack(Items.dye, 1, 4),
+				'o', Item.getItemFromBlock(Blocks.obsidian));
 	}
 
 	private void registerNecromanticTransformations() {
