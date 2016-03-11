@@ -11,6 +11,11 @@ public class CircleHelper {
 		return -range * MathHelper.sin(yaw * DEG);
 	}
 	
+	public static final float calcY(float range, float pitch) {
+		
+		return -range * MathHelper.sin(pitch);
+	}
+	
 	public static final float calcZ(float range, float yaw) {
 		
 		return range * MathHelper.cos(yaw * DEG);

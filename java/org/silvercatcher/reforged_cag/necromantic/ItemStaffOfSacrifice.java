@@ -7,6 +7,7 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -76,19 +77,22 @@ public class ItemStaffOfSacrifice extends Item {
 	
 	private void summon(World world, EntityPlayer player, float power) {
 		
-		player.addChatComponentMessage(new ChatComponentText(
-				String.format("Rolling with %.1f power", power)));
-		
-		EntityLiving summoned;
-		if(power > 50) {
-			summoned = new EntitySkeleton(world);
-		} else {
-			summoned = new EntityZombie(world);
+		if(power > 10) {
+			player.addChatComponentMessage(new ChatComponentText(
+					String.format("Rolling with %.1f power", power)));
+			
+			EntityLiving summoned;
+			if(power > 50) {
+				summoned = new EntitySkeleton(world);
+				summoned.setCurrentItemOrArmor(0, new ItemStack(Items.bow));
+			} else {
+				summoned = new EntityZombie(world);
+			}
+			
+			summoned.setPosition(player.posX + CircleHelper.calcX(range, player.rotationYaw),
+					player.posY, player.posZ + CircleHelper.calcZ(range, player.rotationYaw));
+			summoned.setCanPickUpLoot(true);
+			world.spawnEntityInWorld(summoned);	
 		}
-		
-		summoned.setPosition(player.posX + CircleHelper.calcX(range, player.rotationYaw),
-				player.posY, player.posZ + CircleHelper.calcZ(range, player.rotationYaw));
-		summoned.setCanPickUpLoot(true);
-		world.spawnEntityInWorld(summoned);	
 	}
 }

@@ -24,7 +24,7 @@ public class ItemHolyCrossOfCourage extends ItemHolyCross {
 
 	@Override
 	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity) {
-					
+
 		if(!player.worldObj.isRemote) {
 			if(entity instanceof EntityLiving && ((EntityLiving) entity).isEntityUndead()) {
 				if(entity.isEntityAlive()) {
@@ -49,13 +49,16 @@ public class ItemHolyCrossOfCourage extends ItemHolyCross {
 		MinecraftServer server = MinecraftServer.getServer();
 				
 		for(int i = 0; i < sinners.tagCount(); i++) {
-			
+
 			UUID uuid = UUID.fromString(sinners.getStringTagAt(i));
 			
 			EntityLivingBase sinner = (EntityLivingBase) server.getEntityFromUuid(uuid);
 			
 			if(sinner == null || !sinner.isEntityAlive()) {
 				sinners.removeTag(i);
+			} else if(sinner.getDistanceToEntity(player) > reach) {
+				System.out.println(sinner.getDistanceToEntity(player));
+				continue;
 			} else {
 				strikeLightning(player.worldObj, sinner, player);
 				striked = true;

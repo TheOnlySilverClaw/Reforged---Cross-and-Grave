@@ -27,7 +27,7 @@ public abstract class ItemHolyCross extends ItemReforgedWeapon {
 
 	@Override
 	public void onUsingTick(ItemStack stack, EntityPlayer player, int count) {
-		if(!player.worldObj.isRemote && count % delay == 0) {
+		if(!player.worldObj.isRemote && count % delay == delay/2) {
 			if(whenReady(player, stack)) {
 				stack.damageItem(1, player);
 			}
