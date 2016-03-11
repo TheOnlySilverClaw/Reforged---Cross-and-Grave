@@ -2,6 +2,6 @@
     "parent": "reforged_cag:item/necromancers_staff",
     
     "textures": {
-        "layer0": "reforged_cag:items/staff_sacrifice_new"
+        "layer0": "reforged_cag:items/staff_sacrifice"
     }
 }
