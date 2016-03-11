@@ -4,8 +4,6 @@ import java.util.Map.Entry;
 
 import org.silvercatcher.reforged_cag.CrossAndGraveMod;
 import org.silvercatcher.reforged_cag.holy.HolyEvents;
-import org.silvercatcher.reforged_cag.necromantic.NecromanticSettings;
-import org.silvercatcher.reforged_cag.necromantic.NecromanticTransformation;
 
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.monster.EntitySkeleton;
@@ -61,37 +59,7 @@ public class CommonProxy {
 
 	private void registerNecromanticTransformations() {
 		
-		NecromanticSettings.registerTranformation(EntityZombie.class,
-				new NecromanticTransformation<EntityZombie>() {
-
-			@Override
-			public int getTransformationCost(EntityPlayer necromancer, EntityZombie target) {
-				return 5;
-			}
-
-			@Override
-			public EntityLiving transform(EntityPlayer master, EntityZombie slave) {
-				
-				extendProperties(master, slave);
-				return slave;
-			}
-		});
-		
-		NecromanticSettings.registerTranformation(EntitySkeleton.class,
-				new NecromanticTransformation<EntitySkeleton>() {
-
-					@Override
-					public int getTransformationCost(EntityPlayer necromancer, EntitySkeleton target) {
-						return 15;
-					}
-
-					@Override
-					public EntityLiving transform(EntityPlayer master, EntitySkeleton slave) {
-						
-						extendProperties(master, slave);
-						return slave;
-					}
-		});
+		// will be replaced with subclasses
 
 	}
 

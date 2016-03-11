@@ -12,7 +12,6 @@ public class EntityAINecromancerControlled extends EntityAIBase {
 	private final int updateInterval = 40;
 	
 	private final EntityLiving slave;
-	private final NecromanticMinionProperties properties;
 	
 	private int updateCountdownDown;
 	
@@ -20,22 +19,19 @@ public class EntityAINecromancerControlled extends EntityAIBase {
 	public EntityAINecromancerControlled(EntityLiving slave) {
 		
 		this.slave = Objects.requireNonNull(slave);
-		this.properties =(NecromanticMinionProperties)
-				slave.getExtendedProperties(NecromanticMinionProperties.key);
 	}
 
 	@Override
 	public boolean shouldExecute() {
 
-		return properties.getMaster() != null && updateCountdownDown-- == 0;
+		return updateCountdownDown-- == 0;
 	}
 
 	@Override
 	public void startExecuting() {
 	
 		System.out.println("executing");
-		
-		EntityPlayer master = properties.getMaster();
+
 	}
 	
 	@Override

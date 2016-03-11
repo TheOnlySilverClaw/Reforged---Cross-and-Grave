@@ -26,12 +26,8 @@ public class ItemHolyCrossOfPurgation extends ItemHolyCross {
 					player.worldObj.getEntitiesWithinAABB(EntityLiving.class,
 					player.getEntityBoundingBox()
 					.expand(shortRange, shortRange / 2, shortRange),
-					new Predicate<EntityLiving>() {
-						@Override
-						public boolean apply(EntityLiving living) {
-							return living.isEntityUndead();
-						}
-					})) {
+					living -> living.isEntityUndead()
+					)) {
 				sinner.attackEntityFrom(new EntityDamageSource("holy", player), 1f);
 			}
 		}
