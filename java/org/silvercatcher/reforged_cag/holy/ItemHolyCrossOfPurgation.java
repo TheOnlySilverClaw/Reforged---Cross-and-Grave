@@ -50,7 +50,7 @@ public class ItemHolyCrossOfPurgation extends ItemHolyCross {
 		if(sinners.isEmpty()) return false;
 
 		for(EntityLiving target : sinners) { 
-			strikeLightning(player.worldObj, target, player);;
+			punish(player.worldObj, target, player);;
 		}
 		return true;
 	}

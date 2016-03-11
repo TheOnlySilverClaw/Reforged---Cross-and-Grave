@@ -1,5 +1,6 @@
 package org.silvercatcher.reforged_cag.holy;
 
+import org.silvercatcher.reforged_cag.CrossAndGraveSettings;
 import org.silvercatcher.reforged_cag.items.ItemReforgedWeapon;
 
 import com.google.common.collect.Multimap;
@@ -36,11 +37,26 @@ public abstract class ItemHolyCross extends ItemReforgedWeapon {
 	
 	protected abstract boolean whenReady(EntityPlayer player, ItemStack stack);
 	
+	protected void punish(World world, EntityLivingBase sinner, EntityPlayer punisher) {
+		
+		if(CrossAndGraveSettings.epicPunishing) {
+			strikeLightning(world, sinner, punisher);
+		} else {
+			float damage = 5f;
+			if(sinner.isImmuneToFire()) {
+				damage += 2.5f;
+			} else {
+				sinner.setFire(8);
+			}
+			sinner.attackEntityFrom(HolyDamage.causeHolyDamage(punisher), damage);
+		}
+	}
 	protected void strikeLightning(World world,
 			EntityLivingBase sinner, EntityPlayer punisher) {
 		
 			world.addWeatherEffect((new EntityLightningBolt(
 				world, sinner.posX, sinner.posY, sinner.posZ)));
+			sinner.setLastAttacker(punisher);
 	}
 	
 	@Override

@@ -57,10 +57,9 @@ public class ItemHolyCrossOfCourage extends ItemHolyCross {
 			if(sinner == null || !sinner.isEntityAlive()) {
 				sinners.removeTag(i);
 			} else if(sinner.getDistanceToEntity(player) > reach) {
-				System.out.println(sinner.getDistanceToEntity(player));
 				continue;
 			} else {
-				strikeLightning(player.worldObj, sinner, player);
+				punish(player.worldObj, sinner, player);
 				striked = true;
 				break;
 			}
