@@ -51,12 +51,20 @@ public abstract class ItemHolyCross extends ItemReforgedWeapon {
 			sinner.attackEntityFrom(HolyDamage.causeHolyDamage(punisher), damage);
 		}
 	}
+	
 	protected void strikeLightning(World world,
 			EntityLivingBase sinner, EntityPlayer punisher) {
 		
-			world.addWeatherEffect((new EntityLightningBolt(
-				world, sinner.posX, sinner.posY, sinner.posZ)));
-			sinner.setLastAttacker(punisher);
+		if(!world.isRemote) {
+			float damage = 0f;
+			if(CrossAndGraveSettings.epicPunishing) {
+				world.addWeatherEffect(new EntityLightningBolt(
+						world, sinner.posX, sinner.posY, sinner.posZ));
+			} else {
+				damage = 5f;
+			}
+			sinner.attackEntityFrom(HolyDamage.causeHolyDamage(punisher), damage);
+		}
 	}
 	
 	@Override
