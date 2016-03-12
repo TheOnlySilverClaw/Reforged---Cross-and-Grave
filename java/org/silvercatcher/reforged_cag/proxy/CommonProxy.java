@@ -6,6 +6,7 @@ import java.util.Map.Entry;
 import org.silvercatcher.reforged_cag.CrossAndGraveMod;
 import org.silvercatcher.reforged_cag.CrossAndGraveSettings;
 import org.silvercatcher.reforged_cag.holy.HolyEvents;
+import org.silvercatcher.reforged_cag.necromantic.minions.EntityZombieMinion;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -15,6 +16,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class CommonProxy {
@@ -38,15 +40,14 @@ public class CommonProxy {
 		if(cagConfig.hasChanged()) {
 			cagConfig.save();
 		}
-		System.out.println("epic: " + CrossAndGraveSettings.epicPunishing);
 		MinecraftForge.EVENT_BUS.register(new HolyEvents());
 		registerItems();
+		registerEntities();
 	}
 	
 	public void init(FMLInitializationEvent event) {
 	
 		registerRecipes();
-		registerNecromanticTransformations();
 	}
 
 	private void registerRecipes() {
@@ -89,9 +90,11 @@ public class CommonProxy {
 				'o', Item.getItemFromBlock(Blocks.obsidian));
 	}
 
-	private void registerNecromanticTransformations() {
+	private void registerEntities() {
 		
-		// will be replaced with subclasses
+		EntityRegistry.registerModEntity(EntityZombieMinion.class, "zombie_minion",
+				0, CrossAndGraveMod.instance, 40, 20, true);
+		EntityRegistry.registerEgg(EntityZombieMinion.class, 474, 284);
 
 	}
 
