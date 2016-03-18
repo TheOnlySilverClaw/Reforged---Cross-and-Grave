@@ -3,14 +3,7 @@ package org.silvercatcher.reforged_cag.necromantic;
 import org.silvercatcher.reforged_cag.CrossAndGraveMod;
 import org.silvercatcher.reforged_cag.necromantic.minions.EntitySkeletonMinion;
 import org.silvercatcher.reforged_cag.necromantic.minions.EntityZombieMinion;
-import org.silvercatcher.reforged_cag.necromantic.minions.UndeadMinion;
-import org.silvercatcher.reforged_cag.util.CircleHelper;
-
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.monster.EntitySkeleton;
-import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

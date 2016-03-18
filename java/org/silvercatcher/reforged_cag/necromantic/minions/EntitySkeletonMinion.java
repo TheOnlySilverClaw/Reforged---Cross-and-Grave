@@ -3,14 +3,12 @@ package org.silvercatcher.reforged_cag.necromantic.minions;
 import org.silvercatcher.reforged_cag.util.CircleHelper;
 
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.DataWatcher.WatchableObject;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import scala.util.Random;
 
 public class EntitySkeletonMinion extends EntitySkeleton
 	implements UndeadMinion<EntitySkeleton>{

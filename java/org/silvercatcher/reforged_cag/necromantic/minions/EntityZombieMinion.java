@@ -11,7 +11,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import scala.util.Random;
 
 public class EntityZombieMinion extends EntityZombie
 	implements UndeadMinion<EntityZombie> {
@@ -49,6 +48,7 @@ public class EntityZombieMinion extends EntityZombie
 			.setBaseValue(15);
 	}
 	
+	@Override
 	public int getPowerDrain() {
 		return 5;
 	}
