@@ -3,14 +3,15 @@
   "modid": "reforged_cag",
   "name": "Reforged - Cross & Grave",
   "description": "Adds the Holy Cross (Necromancer's Staff is WIP).",
-  "version": "0.7",
+  "version": "0.8",
   "mcversion": "1.8",
   "url": "http://mods.curse.com/mc-mods/minecraft/242648-reforged-cross-grave",
   "updateUrl": "",
   "authorList": ["Silvercatcher"],
-  "credits": "Snow_Yoshi98 for textures.",
+  "credits": "",
   "logoFile": "",
   "screenshots": [],
-  "dependencies": []
+  "dependencies": [],
+  "parent":"reforged"
 }
 ]
