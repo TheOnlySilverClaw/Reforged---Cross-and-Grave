@@ -53,7 +53,6 @@ public class CrossAndGraveMod
 				new ItemStaffOfSacrifice(),
 				new ItemStaffOfRevival()
 		});
-		
 		tabItem = items.get("holy_cross")[1];
 	}
 	

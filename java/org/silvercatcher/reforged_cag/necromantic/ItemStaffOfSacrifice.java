@@ -1,6 +1,9 @@
 package org.silvercatcher.reforged_cag.necromantic;
 
 import org.silvercatcher.reforged_cag.CrossAndGraveMod;
+import org.silvercatcher.reforged_cag.necromantic.minions.EntitySkeletonMinion;
+import org.silvercatcher.reforged_cag.necromantic.minions.EntityZombieMinion;
+import org.silvercatcher.reforged_cag.necromantic.minions.UndeadMinion;
 import org.silvercatcher.reforged_cag.util.CircleHelper;
 
 import net.minecraft.entity.EntityLiving;
@@ -80,19 +83,11 @@ public class ItemStaffOfSacrifice extends Item {
 		if(power > 10) {
 			player.addChatComponentMessage(new ChatComponentText(
 					String.format("Rolling with %.1f power", power)));
-			
-			EntityLiving summoned;
-			if(power > 50) {
-				summoned = new EntitySkeleton(world);
-				summoned.setCurrentItemOrArmor(0, new ItemStack(Items.bow));
+			if(power < 40) {
+				new EntityZombieMinion(world).summon(player, 2f);
 			} else {
-				summoned = new EntityZombie(world);
+				new EntitySkeletonMinion(world).summon(player, 2f);
 			}
-			
-			summoned.setPosition(player.posX + CircleHelper.calcX(range, player.rotationYaw),
-					player.posY, player.posZ + CircleHelper.calcZ(range, player.rotationYaw));
-			summoned.setCanPickUpLoot(true);
-			world.spawnEntityInWorld(summoned);	
 		}
 	}
 }

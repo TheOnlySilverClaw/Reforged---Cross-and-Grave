@@ -19,7 +19,7 @@ public class HolyEvents {
 	@SubscribeEvent
 	public void onUndeadHit(LivingAttackEvent event) {
 		
-		if(event.isCanceled()) return;		
+		if(event.isCanceled()) return;	
 		if(event.entityLiving.isEntityUndead()) {
 			// help preventing the infinite loop of doom
 			if(!event.source.damageType.equals(HolyDamage.sourceName) &&
@@ -28,7 +28,8 @@ public class HolyEvents {
 				IAttributeInstance holyDamageAttribute = attacker
 						.getAttributeMap().getAttributeInstanceByName(
 								HolyDamage.attribute.getAttributeUnlocalizedName());
-				if(holyDamageAttribute == null) return;
+				if(holyDamageAttribute == null || holyDamageAttribute
+						.getAttributeValue() < 0.01) return;
 				event.setCanceled(true);
 				event.entityLiving.attackEntityFrom(
 						HolyDamage.causeHolyDamage(attacker),

@@ -6,6 +6,7 @@ import java.util.Map.Entry;
 import org.silvercatcher.reforged_cag.CrossAndGraveMod;
 import org.silvercatcher.reforged_cag.CrossAndGraveSettings;
 import org.silvercatcher.reforged_cag.holy.HolyEvents;
+import org.silvercatcher.reforged_cag.necromantic.minions.EntitySkeletonMinion;
 import org.silvercatcher.reforged_cag.necromantic.minions.EntityZombieMinion;
 
 import net.minecraft.init.Blocks;
@@ -30,12 +31,17 @@ public class CommonProxy {
 		}
 		File cagConfigFile = new File(configDirectory, "cross_and_grave.cfg");
 		Configuration cagConfig = new Configuration(cagConfigFile);
+		
 		CrossAndGraveSettings.epicPunishing = 
 				cagConfig.getBoolean("epic-punishing", "Behaviour",
 				CrossAndGraveSettings.epicPunishing,
 				"true: Holy Crosses use lightning to destroy undead creatures. (more epic)"
 				+ "\nfalse: Holy Crosses damage undead creatures "
 				+ "\nand set them on fire (safer and better for looting)");
+		
+		CrossAndGraveSettings.enableStaffs = cagConfig.getBoolean("enable-staffs",
+				"Experimental Features", CrossAndGraveSettings.enableStaffs,
+				"change to true to make necromancers' staffs craftable");
 		
 		if(cagConfig.hasChanged()) {
 			cagConfig.save();
@@ -75,6 +81,7 @@ public class CommonProxy {
 				'd', Items.diamond,
 				'e', Items.emerald);
 		
+		if(CrossAndGraveSettings.enableStaffs) {
 		GameRegistry.addRecipe(new ItemStack(CrossAndGraveMod.items.get("necromancers_staff")[0]),
 				"  r",
 				" o ",
@@ -88,14 +95,18 @@ public class CommonProxy {
 				"o  ",
 				'l', new ItemStack(Items.dye, 1, 4),
 				'o', Item.getItemFromBlock(Blocks.obsidian));
+		}
 	}
 
 	private void registerEntities() {
 		
 		EntityRegistry.registerModEntity(EntityZombieMinion.class, "zombie_minion",
-				0, CrossAndGraveMod.instance, 40, 20, true);
+				0, CrossAndGraveMod.instance, 64, 2, true);
 		EntityRegistry.registerEgg(EntityZombieMinion.class, 474, 284);
 
+		EntityRegistry.registerModEntity(EntitySkeletonMinion.class, "skeleton_minion",
+				1, CrossAndGraveMod.instance, 64, 2, true);
+		EntityRegistry.registerEgg(EntitySkeletonMinion.class, 474, 874);
 	}
 
 	private void registerItems() {
