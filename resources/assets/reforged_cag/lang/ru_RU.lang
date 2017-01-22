@@ -1,0 +1,10 @@
+itemGroup.reforged_cag=Reforged - Cross & Grave
+
+item.holy_cross_courage.name=Святой Крест Куража 
+item.holy_cross_wrath.name=§eСвятой Крест Правды
+item.holy_cross_purgation.name=§bСвятой Крест Очищения
+
+item.staff_sacrifice.name=Посох Приношения в жертву
+item.staff_reanimation.name=Посох Воскрешения
+
+attribute.name.holy.attackDamage=Святой Урон
