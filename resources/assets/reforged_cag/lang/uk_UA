@@ -1,0 +1,10 @@
+itemGroup.reforged_cag=Reforged - Cross & Grave
+
+item.holy_cross_courage.name=Святий Хрест Куражу
+item.holy_cross_wrath.name=§eСвятий Хрест Правди
+item.holy_cross_purgation.name=§bСвятий Хрест Очищення
+
+item.staff_sacrifice.name=Посох Приношення в жертву
+item.staff_reanimation.name=Посох Воскресіння
+
+attribute.name.holy.attackDamage=Свята Атака
