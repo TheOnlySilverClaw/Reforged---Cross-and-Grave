@@ -41,22 +41,16 @@ public class CrossAndGraveMod
 		}
 	};
 	
+	public static final Item COURAGE = new ItemHolyCrossOfCourage();
+	public static final Item WRATH = new ItemHolyCrossOfWrath();
+	public static final Item PURGATION = new ItemHolyCrossOfPurgation();
+	
+	public static final Item SACRIFICE = new ItemStaffOfSacrifice();
+	public static final Item REVIVAL = new ItemStaffOfRevival();
+	
 	static {
-		
-		items.put("holy_cross", new Item [] {
-				new ItemHolyCrossOfCourage(),
-				new ItemHolyCrossOfWrath(),
-				new ItemHolyCrossOfPurgation()
-		});
-
-		items.put("necromancers_staff", new Item [] {
-				new ItemStaffOfSacrifice(),
-				new ItemStaffOfRevival()
-		});
-		tabItem = items.get("holy_cross")[1];
+		tabItem = PURGATION;
 	}
-	
-	
 	
     @Instance(ID)
     public static CrossAndGraveMod instance;

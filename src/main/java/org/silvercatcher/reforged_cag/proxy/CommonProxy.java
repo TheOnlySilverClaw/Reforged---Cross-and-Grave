@@ -1,13 +1,10 @@
 package org.silvercatcher.reforged_cag.proxy;
 
 import java.io.File;
-import java.util.Map.Entry;
 
 import org.silvercatcher.reforged_cag.CrossAndGraveMod;
 import org.silvercatcher.reforged_cag.CrossAndGraveSettings;
 import org.silvercatcher.reforged_cag.holy.HolyEvents;
-import org.silvercatcher.reforged_cag.necromantic.minions.EntitySkeletonMinion;
-import org.silvercatcher.reforged_cag.necromantic.minions.EntityZombieMinion;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -17,7 +14,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class CommonProxy {
@@ -39,16 +35,13 @@ public class CommonProxy {
 				+ "\nfalse: Holy Crosses damage undead creatures "
 				+ "\nand set them on fire (safer and better for looting)");
 		
-		CrossAndGraveSettings.enableStaffs = cagConfig.getBoolean("enable-staffs",
-				"Experimental Features", CrossAndGraveSettings.enableStaffs,
-				"change to true to make necromancers' staffs craftable");
+		CrossAndGraveSettings.enableStaffs = true;
 		
 		if(cagConfig.hasChanged()) {
 			cagConfig.save();
 		}
 		MinecraftForge.EVENT_BUS.register(new HolyEvents());
 		registerItems();
-		registerEntities();
 	}
 	
 	public void init(FMLInitializationEvent event) {
@@ -59,7 +52,7 @@ public class CommonProxy {
 	private void registerRecipes() {
 		
 		GameRegistry.addRecipe(
-				new ItemStack(CrossAndGraveMod.items.get("holy_cross")[0]),
+				new ItemStack(CrossAndGraveMod.COURAGE),
 				" s ",
 				"sgs",
 				" s ",
@@ -67,14 +60,14 @@ public class CommonProxy {
 				'g', Items.gold_ingot
 				);
 		
-		GameRegistry.addRecipe(new ItemStack(CrossAndGraveMod.items.get("holy_cross")[1]),
+		GameRegistry.addRecipe(new ItemStack(CrossAndGraveMod.WRATH),
 				" g ",
 				"gdg",
 				" g ",
 				'g', Items.gold_ingot,
 				'd', Items.diamond);
 		
-		GameRegistry.addRecipe(new ItemStack(CrossAndGraveMod.items.get("holy_cross")[2]),
+		GameRegistry.addRecipe(new ItemStack(CrossAndGraveMod.PURGATION),
 				" d ",
 				"ded",
 				" d ",
@@ -82,14 +75,14 @@ public class CommonProxy {
 				'e', Items.emerald);
 		
 		if(CrossAndGraveSettings.enableStaffs) {
-		GameRegistry.addRecipe(new ItemStack(CrossAndGraveMod.items.get("necromancers_staff")[0]),
+		GameRegistry.addRecipe(new ItemStack(CrossAndGraveMod.SACRIFICE),
 				"  r",
 				" o ",
 				"o  ",
 				'r', Items.redstone,
 				'o', Item.getItemFromBlock(Blocks.obsidian));
 		
-		GameRegistry.addRecipe(new ItemStack(CrossAndGraveMod.items.get("necromancers_staff")[1]),
+		GameRegistry.addRecipe(new ItemStack(CrossAndGraveMod.REVIVAL),
 				"  l",
 				" o ",
 				"o  ",
@@ -98,27 +91,13 @@ public class CommonProxy {
 		}
 	}
 
-	private void registerEntities() {
-		
-		EntityRegistry.registerModEntity(EntityZombieMinion.class, "zombie_minion",
-				0, CrossAndGraveMod.instance, 64, 2, true);
-		EntityRegistry.registerEgg(EntityZombieMinion.class, 474, 284);
-
-		EntityRegistry.registerModEntity(EntitySkeletonMinion.class, "skeleton_minion",
-				1, CrossAndGraveMod.instance, 64, 2, true);
-		EntityRegistry.registerEgg(EntitySkeletonMinion.class, 474, 874);
-	}
-
 	private void registerItems() {
-	
-		for(Entry<String, Item[]> entry : CrossAndGraveMod.items.entrySet()) {
-			
-			Item [] tier = entry.getValue();
-			
-			for(int i = 0; i < tier.length; i++) {
 				
-				GameRegistry.registerItem(tier[i], tier[i].getUnlocalizedName().substring(5));
-			}
-		}
+		GameRegistry.registerItem(CrossAndGraveMod.COURAGE, "HolyCrossOfCourage");
+		GameRegistry.registerItem(CrossAndGraveMod.WRATH, "HolyCrossOfWrath");
+		GameRegistry.registerItem(CrossAndGraveMod.PURGATION, "HolyCrossOfPurgation");
+		
+		GameRegistry.registerItem(CrossAndGraveMod.SACRIFICE, "StaffOfSacrifice");
+		GameRegistry.registerItem(CrossAndGraveMod.REVIVAL, "StaffOfRevival");
 	}
 }

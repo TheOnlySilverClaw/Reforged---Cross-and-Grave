@@ -4,12 +4,9 @@ import java.util.List;
 import java.util.Random;
 
 import org.silvercatcher.reforged_cag.CrossAndGraveMod;
-import org.silvercatcher.reforged_cag.necromantic.minions.EntitySkeletonMinion;
-import org.silvercatcher.reforged_cag.necromantic.minions.EntityZombieMinion;
 
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -56,19 +53,6 @@ public class ItemStaffOfRevival extends Item {
 					r = 0;
 				} else {
 					r = random.nextInt(propability);
-				}
-				
-				if(r == 0) {	
-					if(item == Items.rotten_flesh && r == 0) {
-						new EntityZombieMinion(worldIn)
-							.reanimate(playerIn, entityItem);
-					} else if(item == Items.bone) {
-						new EntitySkeletonMinion(worldIn)
-							.reanimate(playerIn, entityItem);
-					}
-					
-					entityItem.setDead();
-					stack.damageItem(1, playerIn);
 				}
 			}
 		}

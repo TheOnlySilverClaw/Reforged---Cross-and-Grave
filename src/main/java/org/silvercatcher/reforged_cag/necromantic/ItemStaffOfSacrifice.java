@@ -1,8 +1,7 @@
 package org.silvercatcher.reforged_cag.necromantic;
 
 import org.silvercatcher.reforged_cag.CrossAndGraveMod;
-import org.silvercatcher.reforged_cag.necromantic.minions.EntitySkeletonMinion;
-import org.silvercatcher.reforged_cag.necromantic.minions.EntityZombieMinion;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
@@ -76,11 +75,6 @@ public class ItemStaffOfSacrifice extends Item {
 		if(power > 10) {
 			player.addChatComponentMessage(new ChatComponentText(
 					String.format("Rolling with %.1f power", power)));
-			if(power < 40) {
-				new EntityZombieMinion(world).summon(player, 2f);
-			} else {
-				new EntitySkeletonMinion(world).summon(player, 2f);
-			}
 		}
 	}
 }
